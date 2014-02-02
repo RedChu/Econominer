@@ -10,7 +10,7 @@
 /temp/*
 
 /src/minecraft/*
-!/src/minecraft/com/*
+!/src/minecraft/com/
 
 *.bat
 *.sh
