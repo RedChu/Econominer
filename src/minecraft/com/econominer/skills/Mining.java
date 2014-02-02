@@ -13,11 +13,11 @@ public class Mining extends Skill {
 		float coalOre = 0.75f;
 		
 		// TODO come up with a better formula -- RC
-		float formula = currentLevel/50;
+		float formula = this.currentLevel/50f;
 		
-		Block.oreIron.setHardness(ironOre/formula);
-		Block.oreDiamond.setHardness(diamondOre/formula);
-		Block.oreGold.setHardness(goldOre/formula);
-		Block.oreCoal.setHardness(coalOre/formula);
+		Block.oreIron.setHardness(ironOre/(formula));
+		Block.oreDiamond.setHardness(diamondOre/(formula));
+		Block.oreGold.setHardness(goldOre/(formula));
+		Block.oreCoal.setHardness(coalOre/(formula));
 	}
 }

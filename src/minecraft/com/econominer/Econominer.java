@@ -2,6 +2,7 @@ package com.econominer;
 
 import com.econominer.skills.Mining;
 
+
 /*
 * Basic importing
 */
@@ -16,7 +17,8 @@ import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
+//import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -42,7 +44,7 @@ public class Econominer
 	//tools
 	
 	//Declaring Init
-	@Init
+	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
 		// TODO player stuff I guess -- RC
