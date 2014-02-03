@@ -1,7 +1,7 @@
 package com.econominer;
 
+import com.econominer.events.MiningEvent;
 import com.econominer.skills.Mining;
-
 
 /*
 * Basic importing
@@ -14,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.EnumHelper;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.Mod;
@@ -31,6 +32,10 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Econominer
 {
+	/**
+	 *  Instance of Mining skill
+	 */
+	public static Mining mining = new Mining();
 	/*
 	* ToolMaterial
 	*/
@@ -38,8 +43,6 @@ public class Econominer
 	//items
 	public static Item amethyst;
 	public static Block amethystblock;
-	//public static EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
-	public static Mining miner = new Mining();
 	
 	//tools
 	
@@ -48,7 +51,7 @@ public class Econominer
 	public void load(FMLInitializationEvent event)
 	{
 		// TODO player stuff I guess -- RC
-		miner.setMiningSpeeds();
+		mining.setMiningSpeeds();
 		
 		amethyst = new EcoItem(2000).setUnlocalizedName("amethyst");
 		LanguageRegistry.addName(amethyst, "Amethyst");
@@ -59,5 +62,7 @@ public class Econominer
 		
 		GameRegistry.registerWorldGenerator(new WorldGenEco());
 		
+		// register custom events -- RC
+		MinecraftForge.EVENT_BUS.register(new MiningEvent());
 	}
 }

@@ -1,5 +1,7 @@
 package com.econominer.skills;
 
+import net.minecraft.client.Minecraft;
+
 public class Skill {
 	protected int currentLevel = 1;
 	protected int currentXP = 0;
@@ -29,6 +31,7 @@ public class Skill {
 		{
 			currentXP -= expThreshold;
 			currentLevel ++;
+			Minecraft.getMinecraft().thePlayer.sendChatMessage("You've advanced to level "+currentLevel+" in Mining!"); // TODO fix this so it sends as a server/client notification thingy -- RC
 			recalculateXP();
 		}
 	}
