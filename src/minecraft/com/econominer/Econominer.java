@@ -3,6 +3,11 @@ package com.econominer;
 import com.econominer.events.MiningEvent;
 import com.econominer.skills.Mining;
 
+
+
+
+
+
 /*
 * Basic importing
 */
@@ -13,14 +18,16 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-//import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -32,21 +39,31 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 
 public class Econominer
 {
+	@Instance()
+	public static Econominer instance;
+	
 	/**
 	 *  Instance of Mining skill
 	 */
 	public static Mining mining = new Mining();
-	/*
-	* ToolMaterial
-	*/
-	//Telling forge that we are creating these
-	//items
+
+	// Item Initialization
 	public static Item amethyst;
+	
+	// Block Initialization
 	public static Block amethystblock;
 	
-	//tools
 	
-	//Declaring Init
+	// Create config file
+	@EventHandler
+	public void preLoad(FMLPreInitializationEvent event)
+	{
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		config.save();
+	}
+	
+	// Initialize mod
 	@EventHandler
 	public void load(FMLInitializationEvent event)
 	{
